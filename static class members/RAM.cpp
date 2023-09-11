@@ -10,10 +10,13 @@ RAM::RAM()
 RAM::RAM(char* name) 
 {
 	this->name = new char[strlen(name)+1];
+	strcpy_s(this->name, strlen(name) + 1, name);
 };
 RAM::RAM(char* name, char* type_name) :RAM(name)
 {
 	this->type_name = new char[strlen(type_name) + 1];
+	strcpy_s(this->type_name, strlen(type_name) + 1, type_name);
+
 };
 RAM::RAM(char* name, char* type_name, unsigned int work_frequency) :RAM(name, type_name)
 {
@@ -25,8 +28,10 @@ RAM::RAM(char* name, char* type_name, unsigned int work_frequency, double price)
 };
 RAM::~RAM() 
 {
-	delete[]this->name;
-	delete[]this->type_name;
+	if (this->name != nullptr)
+		delete[]this->name;
+	if(this->type_name!=nullptr)
+		delete[]this->type_name;
 };
 char* RAM:: get_name()
 {
