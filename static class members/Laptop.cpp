@@ -89,6 +89,7 @@ Laptop::~Laptop()
 	if (this->color != nullptr)
 		delete[]this->color;
 	cout << "Laptop destructor" << endl;
+	laptops--;
 };
 char* Laptop:: get_name()
 {
